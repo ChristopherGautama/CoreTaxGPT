@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 1,
+  "status": "DESIGN",
+  "verificationNote": "Expected results adalah kontrak kasus, bukan hasil run tes. Lihat laporan QA untuk PASS/FAIL aktual. Semua nilai nominal berupa string rupiah presisi.",
+  "cutoff": "2026-10-04",
+  "defaultPeriod": "2026-10",
+  "defaultClock": "2026-11-15T09:00:00+07:00",
+  "signedConvention": {
+    "KB": "positive",
+    "LB": "negative",
+    "NIHIL": "zero"
+  },
+  "cases": [
+    {
+      "id": "A",
+      "name": "KB dasar",
+      "period": "2026-10",
+      "salesNet": "500000000",
+      "eligiblePurchasesNet": "200000000",
+      "compensation": "3000000",
+      "expected": {
+        "outputPpn": "55000000",
+        "inputPpn": "22000000",
+        "II.E": "3000000",
+        "II.G": "25000000",
+        "III.C": "25000000",
+        "III.E": "30000000",
+        "result": "KB"
+      },
+      "assumptions": [
+        "PKP dagang domestik nonmewah umum",
+        "Semua dokumen efektif/PM eligible",
+        "Tidak ada setoran di muka/kelebihan pemungutan",
+        "September telah dilaporkan dan asal kompensasi tersimpan"
+      ],
+      "source": "R00 halaman22"
+    },
+    {
+      "id": "B",
+      "name": "Lebih bayar",
+      "salesNet": "100000000",
+      "eligiblePurchasesNet": "250000000",
+      "compensation": "0",
+      "expected": {
+        "outputPpn": "11000000",
+        "inputPpn": "27500000",
+        "III.E": "-16500000",
+        "result": "LB",
+        "requiresFiling": true,
+        "requiresKbBilling": false
+      },
+      "source": "R00 halaman23"
+    },
+    {
+      "id": "C",
+      "name": "Nihil",
+      "salesNet": "200000000",
+      "eligiblePurchasesNet": "200000000",
+      "compensation": "0",
+      "expected": {
+        "outputPpn": "22000000",
+        "inputPpn": "22000000",
+        "III.E": "0",
+        "result": "NIHIL",
+        "requiresFiling": true
+      },
+      "source": "R00 halaman23"
+    },
+    {
+      "id": "D",
+      "name": "PM noneligible tetap dicatat",
+      "baseCase": "A",
+      "nonEligibleInputPpn": "5000000",
+      "expected": {
+        "inputPpn": "17000000",
+        "B3.ppn": "5000000",
+        "III.C": "20000000",
+        "III.E": "35000000"
+      },
+      "source": "R00 halaman23"
+    },
+    {
+      "id": "E-OCT",
+      "name": "Retur efektif Oktober",
+      "baseCase": "A",
+      "returnNet": "20000000",
+      "returnDate": "2026-10-25",
+      "returnStatus": "approved",
+      "expected": {
+        "outputPpnReduction": "2200000",
+        "III.E": "27800000",
+        "appliedPeriod": "2026-10"
+      },
+      "source": "R00 halaman23"
+    },
+    {
+      "id": "E-NOV",
+      "name": "Retur November atas faktur Oktober",
+      "baseCase": "A",
+      "returnNet": "20000000",
+      "returnDate": "2026-11-05",
+      "returnStatus": "approved",
+      "expected": {
+        "october.III.E": "30000000",
+        "november.outputPpnReduction": "2200000",
+        "appliedPeriod": "2026-11"
+      },
+      "source": "R00 halaman23"
+    },
+    {
+      "id": "E-REJECT",
+      "name": "Retur ditolak belum mengubah PK",
+      "baseCase": "A",
+      "returnNet": "20000000",
+      "returnStatus": "rejected",
+      "expected": {
+        "outputPpnReduction": "0",
+        "III.E": "30000000"
+      },
+      "source": "User acceptance6; R00 halaman10"
+    },
+    {
+      "id": "F",
+      "name": "Uang muka dan pelunasan (P1 angka saja)",
+      "contractNet": "100000000",
+      "advanceNet": "30000000",
+      "settlementNet": "70000000",
+      "expected": {
+        "advancePpn": "3300000",
+        "settlementPpn": "7700000",
+        "totalPpn": "11000000"
+      },
+      "source": "R00 halaman23",
+      "uiSupportClaim": false
+    },
+    {
+      "id": "G",
+      "name": "PPnBM pedagogis",
+      "salesNet": "1000000000",
+      "luxuryRate": "0.20",
+      "eligibleInputPpn": "22000000",
+      "expected": {
+        "outputPpn": "120000000",
+        "ppnbm": "200000000",
+        "invoiceGross": "1320000000",
+        "ppnPayable": "98000000",
+        "ppnbmPayable": "200000000"
+      },
+      "assumptions": [
+        "Produsen menyerahkan BKP yang secara hukum tergolong mewah",
+        "Tarif20% hanya asumsi latihan; bukan tarif seluruh barang mahal"
+      ],
+      "source": "R00 halaman23"
+    },
+    {
+      "id": "H",
+      "name": "Pembetulan KB bertambah",
+      "correctPeriodResult": "32200000",
+      "ppnPayments": "30000000",
+      "refundSKPPKP": "0",
+      "expected": {
+        "III.E": "32200000",
+        "III.F": "30000000",
+        "III.G": "2200000"
+      },
+      "source": "R00 halaman23"
+    },
+    {
+      "id": "I",
+      "name": "Pembetulan KB berkurang",
+      "correctPeriodResult": "24500000",
+      "ppnPayments": "30000000",
+      "refundSKPPKP": "0",
+      "expected": {
+        "III.E": "24500000",
+        "III.F": "30000000",
+        "III.G": "-5500000"
+      },
+      "source": "R00 halaman23"
+    },
+    {
+      "id": "J",
+      "name": "Pembetulan dengan refund",
+      "correctPeriodResult": "-8000000",
+      "ppnPayments": "0",
+      "refundSKPPKP": "10000000",
+      "expected": {
+        "III.E": "-8000000",
+        "III.F": "-10000000",
+        "III.G": "2000000"
+      },
+      "source": "R00 halaman23"
+    },
+    {
+      "id": "K",
+      "name": "LB mengecil dan penyesuaian kompensasi",
+      "octoberOldLb": "200000",
+      "octoberNewLb": "100000",
+      "novemberLbCarriedToDecember": "300000",
+      "expected": {
+        "october.III.E": "-100000",
+        "october.III.F": "0",
+        "october.III.G": "-100000",
+        "decemberCompensation": "200000",
+        "spuriousKb": "0"
+      },
+      "source": "R00 halaman20–21/23; V18 = S14 halaman45"
+    },
+    {
+      "id": "ARITHMETIC",
+      "name": "Harga neto/bruto dan pembulatan SPT",
+      "expected": {
+        "net100m.ppn": "11000000",
+        "net100m.gross": "111000000",
+        "gross111m.net": "100000000",
+        "round100.49": "100",
+        "round100.50": "101"
+      },
+      "source": "User acceptance2; R00 halaman8/22"
+    },
+    {
+      "id": "PM-WINDOW",
+      "name": "Masa kredit dan duplikat",
+      "invoicePeriod": "2026-01",
+      "expected": {
+        "credit2026-04": "allowed-if-eligible",
+        "credit2026-05": "ordinary-route-blocked-explain-amendment",
+        "duplicateCredit": "rejected"
+      },
+      "source": "User acceptance5; R00 halaman9"
+    },
+    {
+      "id": "BILLING-TIME",
+      "name": "336jam exact",
+      "issuedAt": "2026-11-15T02:00:00.000Z",
+      "expected": {
+        "at335h59m": "active",
+        "at336h": "expired",
+        "payExpired": "rejected",
+        "payPaidTwice": "rejected"
+      },
+      "source": "User acceptance7; R00 halaman18"
+    },
+    {
+      "id": "RULE-TRANSITION",
+      "name": "Pembetulan Agustus pada transisi Oktober",
+      "period": "2026-08",
+      "normalAlreadyFiled": true,
+      "expected": {
+        "filing2026-09-30": "historical-pre-2026-10-01",
+        "filing2026-10-01": "PER-12/PJ/2026"
+      },
+      "source": "User acceptance9; R00 halaman19"
+    },
+    {
+      "id": "AUTH",
+      "name": "Akses dan pemisahan WP",
+      "expected": {
+        "drafterSave": "allowed",
+        "drafterSign": "rejected-including-direct-URL",
+        "switchWp": "no-cross-taxpayer-records"
+      },
+      "source": "User acceptance1; R00 halaman5"
+    },
+    {
+      "id": "PERSISTENCE",
+      "name": "Reload/export/import/reset",
+      "expected": {
+        "reload": "same-document-graph-and-results",
+        "exportImport": "same-document-graph-and-results",
+        "reset": "atomic-original-fixture"
+      },
+      "source": "User acceptance10; R00 halaman24"
+    }
+  ]
+}

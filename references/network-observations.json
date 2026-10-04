@@ -1,0 +1,91 @@
+{
+  "observationDate": "2026-10-04",
+  "method": "Python urllib through environment proxy; no bypass",
+  "requests": [
+    {
+      "url": "https://pajak.go.id/Coretax",
+      "status": "UNVERIFIED",
+      "error": "<urlopen error [Errno 1] Operation not permitted>"
+    },
+    {
+      "url": "https://pajak.go.id/coretaxpedia/",
+      "status": "UNVERIFIED",
+      "error": "<urlopen error [Errno 1] Operation not permitted>"
+    },
+    {
+      "url": "https://pajak.go.id/id/lapor-tahunan",
+      "status": "UNVERIFIED",
+      "error": "<urlopen error [Errno 1] Operation not permitted>"
+    },
+    {
+      "url": "https://www.pajak.go.id/index.php/id/peraturan/ketentuan-pelaporan-pajak-penghasilan-pajak-pertambahan-nilai-pajak-penjualan-atas-0",
+      "status": "UNVERIFIED",
+      "error": "<urlopen error [Errno 1] Operation not permitted>"
+    },
+    {
+      "url": "https://www.pajak.go.id/sites/default/files/lampiran/LAMPIRAN%20PER%2011%20TAHUN%202025.pdf",
+      "status": "UNVERIFIED",
+      "error": "<urlopen error [Errno 1] Operation not permitted>"
+    },
+    {
+      "url": "https://pajak.go.id/id/pelaporan-spt-dalam-rangka-pelaksanaan-sistem-inti-administrasi-perpajakan-12pj2026-tentang",
+      "status": "UNVERIFIED",
+      "error": "<urlopen error [Errno 1] Operation not permitted>"
+    },
+    {
+      "url": "https://pajak.go.id/id/peraturan/perubahan-atas-peraturan-direktur-jenderal-pajak-nomor-10pj2024-tentang-ketentuan",
+      "status": "UNVERIFIED",
+      "error": "<urlopen error [Errno 1] Operation not permitted>"
+    },
+    {
+      "url": "https://jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024/files",
+      "status": "UNVERIFIED",
+      "error": "<urlopen error [Errno 1] Operation not permitted>"
+    }
+  ],
+  "authorizedNetworkRetry": {
+    "method": "Python urllib with additional network permission through environment proxy; no bypass",
+    "requests": [
+      {
+        "url": "https://pajak.go.id/Coretax",
+        "status": "UNVERIFIED",
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      },
+      {
+        "url": "https://pajak.go.id/coretaxpedia/",
+        "status": "UNVERIFIED",
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      },
+      {
+        "url": "https://pajak.go.id/id/lapor-tahunan",
+        "status": "UNVERIFIED",
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      },
+      {
+        "url": "https://www.pajak.go.id/index.php/id/peraturan/ketentuan-pelaporan-pajak-penghasilan-pajak-pertambahan-nilai-pajak-penjualan-atas-0",
+        "status": "UNVERIFIED",
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      },
+      {
+        "url": "https://www.pajak.go.id/sites/default/files/lampiran/LAMPIRAN%20PER%2011%20TAHUN%202025.pdf",
+        "status": "UNVERIFIED",
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      },
+      {
+        "url": "https://pajak.go.id/id/pelaporan-spt-dalam-rangka-pelaksanaan-sistem-inti-administrasi-perpajakan-12pj2026-tentang",
+        "status": "UNVERIFIED",
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      },
+      {
+        "url": "https://pajak.go.id/id/peraturan/perubahan-atas-peraturan-direktur-jenderal-pajak-nomor-10pj2024-tentang-ketentuan",
+        "status": "UNVERIFIED",
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      },
+      {
+        "url": "https://jdih.kemenkeu.go.id/dok/pmk-131-tahun-2024/files",
+        "status": "UNVERIFIED",
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    ]
+  }
+}

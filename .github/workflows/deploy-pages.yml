@@ -1,0 +1,55 @@
+name: Deploy Coretax Learning Simulator to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Use Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Check types and domain invariants
+        run: npm run typecheck && npm test
+      - name: Build static simulator
+        run: npm run build:pages
+        env:
+          PAGES_BASE_PATH: /${{ github.event.repository.name }}/
+      - name: Upload only built application
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Read Pages configuration
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

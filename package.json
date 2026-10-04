@@ -1,0 +1,36 @@
+{
+  "name": "coretax-learning-simulator",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "build:pages": "tsc --noEmit && vite build --mode github-pages",
+    "preview": "vite preview --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:domain": "vitest run tests/domain",
+    "test:integration": "vitest run tests/integration",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "decimal.js": "10.6.0",
+    "idb": "8.0.3",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-router-dom": "7.18.4",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/node": "^24.0.0",
+    "@vitejs/plugin-react": "latest",
+    "fake-indexeddb": "^6.2.4",
+    "typescript": "7.0.2",
+    "vite": "8.3.2",
+    "vitest": "5.0.3"
+  }
+}

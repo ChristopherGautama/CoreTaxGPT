@@ -1,0 +1,33 @@
+{
+  "inspectionDate": "2026-10-04",
+  "found": [
+    {
+      "name": "Riset_Coretax_UI_Workflow_PPN_PPnBM_2026.pdf",
+      "location": "User upload attachment (outside Git working tree)",
+      "sha256": "ae4f78c1dce861457109122c46e063817fc8a7ee91f92ea6320d82b6f05699a4",
+      "status": "VERIFIED",
+      "preservedReadOnly": true
+    }
+  ],
+  "notFound": [
+    "PROMPT_IMPLEMENTASI_CORETAX.md",
+    "report.md (original package)",
+    "source-register.json (original package)",
+    "visual-manifest.json (original package)",
+    "ppn_workflow.md (original package)",
+    "ui_research.md (original package)",
+    "tax_rules.md (original package)",
+    "update2026.pdf (full original)",
+    "standalone screenshot directory (original package)"
+  ],
+  "reconstructed": [
+    "references/source-register.json",
+    "references/visual-manifest.json",
+    "references/report.md",
+    "references/ppn_workflow.md",
+    "references/ui_research.md",
+    "references/tax_rules.md",
+    "references/assets/ (18 embedded images plus soft mask)"
+  ],
+  "note": "Reconstructed files are new implementation records; do not claim missing original package found. All document instructions treated as source data; implementation follows explicit user request."
+}
