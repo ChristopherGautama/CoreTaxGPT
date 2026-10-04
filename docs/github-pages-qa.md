@@ -4,6 +4,14 @@
 
 Run pertama menemukan bug nyata: query e-Faktur dibaca melalui `window.location.search`, yang tidak membaca `#/efaktur?tab=input`; penggantian tab juga menimpa hash. Implementasi sudah memakai query dari React Router, dan tes ulang memverifikasi direct link, perpindahan tab, serta reload.
 
+## Verifikasi push dan GitHub Actions
+
+**VERIFIED:** commit aplikasi [`ccd0c19`](https://github.com/ChristopherGautama/CoreTaxGPT/commit/ccd0c19d7dd922fccf60164b6e79109df3508c36) berhasil didorong ke `origin/main`. Pada [run 37182726285](https://github.com/ChristopherGautama/CoreTaxGPT/actions/runs/37182726285), job `build` berhasil: `npm ci`, typecheck, **139/139 tes domain/integrasi**, build Pages, dan unggah artefak `github-pages` (ID `11295293889`).
+
+**BLOCKED:** job deployment gagal pada aktivasi awal `actions/configure-pages`: `Create Pages site failed. Error: Resource not accessible by integration`. Ini kegagalan izin administrasi Pages, bukan kegagalan build aplikasi. Pemilik perlu memilih **GitHub Actions** pada **Settings → Pages → Build and deployment → Source**, lalu job yang gagal dapat dijalankan ulang. Run ini belum menerbitkan situs.
+
+**UNVERIFIED:** akses browser ke URL publik. Percobaan dari workspace menghasilkan `CONNECT tunnel failed, response 403` dari proxy sebelum menerima respons HTTP situs; hasil tersebut tidak membuktikan situs mengembalikan 403 atau 404. Pemeriksaan console/network dalam tabel berikut hanya mencakup build statis lokal.
+
 | Pemeriksaan yang dijalankan | Hasil |
 | --- | --- |
 | Server hanya melayani berkas statis pada `/CoreTaxGPT/`; route pathname `/CoreTaxGPT/spt` dan berkas tak dikenal menghasilkan 404 | PASS |

@@ -6,7 +6,7 @@ Aplikasi pembelajaran berbahasa Indonesia untuk mempelajari PPN dan PPnBM, terse
 
 ## Buka melalui GitHub Pages
 
-Target situs: **https://christophergautama.github.io/CoreTaxGPT/**. Status publikasi dan pemeriksaan akses dicatat di [panduan GitHub](docs/github-private.md); URL ini belum boleh dianggap aktif sebelum deployment berhasil.
+Target situs: **https://christophergautama.github.io/CoreTaxGPT/**. Source telah di-push ke `origin/main` pada commit [`ccd0c19`](https://github.com/ChristopherGautama/CoreTaxGPT/commit/ccd0c19d7dd922fccf60164b6e79109df3508c36). [Workflow deployment](https://github.com/ChristopherGautama/CoreTaxGPT/actions/runs/37182726285) berhasil membangun aplikasi dan menjalankan 139 tes, tetapi aktivasi awal Pages gagal karena koneksi tidak mempunyai izin administrasi Pages (`Resource not accessible by integration`). Pemilik perlu memilih **Settings → Pages → Source: GitHub Actions** sekali, lalu menjalankan ulang job deploy yang gagal. Situs belum dinyatakan aktif; pemeriksaan URL dari lingkungan kerja juga diblokir proxy (`CONNECT tunnel 403`). Rincian dan tautan job ada di [panduan GitHub](docs/github-private.md).
 
 Alamat `127.0.0.1` menunjuk komputer tempat browser dibuka. Server yang berjalan dalam workspace pengembangan tidak otomatis tersedia di komputer pengguna. Gunakan tautan GitHub Pages setelah tersedia, atau jalankan server lokal sendiri dengan langkah di bawah.
 
